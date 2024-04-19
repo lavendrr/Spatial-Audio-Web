@@ -162,4 +162,79 @@ document.getElementById('playButton2').addEventListener('click', function() {
 
 document.getElementById('pauseButton2').addEventListener('click', function() {
   pauseSource2();
-});
+})
+
+window.onload = function() {
+  var canvas = document.getElementById("myCanvas");
+  var ctx = canvas.getContext("2d");
+
+  // Circle parameters
+  var centerX = canvas.width / 2;
+  var centerY = canvas.height / 2;
+  var radius = 100;
+
+  // Initial point position
+  var pointAngle = Math.PI / 4; // Angle in radians
+  var pointX = centerX + radius * Math.cos(pointAngle);
+  var pointY = centerY + radius * Math.sin(pointAngle);
+  
+  // Draw the circle
+  ctx.beginPath();
+  ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+  ctx.stroke();
+
+  // Draw the draggable point
+  drawPoint();
+
+  // Function to draw the draggable point
+  function drawPoint() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.beginPath();
+      ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(pointX, pointY, 5, 0, 2 * Math.PI);
+      ctx.fillStyle = "red";
+      ctx.fill();
+  }
+
+  // Mouse event listeners for dragging
+  var isDragging = false;
+
+  canvas.addEventListener("mousedown", function(event) {
+      var rect = canvas.getBoundingClientRect();
+      var mouseX = event.clientX - rect.left;
+      var mouseY = event.clientY - rect.top;
+
+      var dx = mouseX - pointX;
+      var dy = mouseY - pointY;
+      if (Math.sqrt(dx*dx + dy*dy) < 10) {
+          isDragging = true;
+      }
+  });
+
+  canvas.addEventListener("mousemove", function(event) {
+      if (isDragging) {
+          var rect = canvas.getBoundingClientRect();
+          var mouseX = event.clientX - rect.left;
+          var mouseY = event.clientY - rect.top;
+
+          var dx = mouseX - centerX;
+          var dy = mouseY - centerY;
+          var newAngle = Math.atan2(dy, dx);
+          var newRadius = Math.sqrt(dx*dx + dy*dy);
+          console.log(newAngle);
+          console.log(newRadius);
+
+          if (newRadius < radius) {
+              pointX = mouseX;
+              pointY = mouseY;
+              drawPoint();
+          }
+      }
+  });
+
+  canvas.addEventListener("mouseup", function(event) {
+      isDragging = false;
+  });
+};
