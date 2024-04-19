@@ -6,11 +6,14 @@ var azimslider1 = document.getElementById("azimslider1");
 var elevslider1 = document.getElementById("elevslider1");
 var azimslider2 = document.getElementById("azimslider2");
 var elevslider2 = document.getElementById("elevslider2");
+var distanceslider1 = document.getElementById("distanceslider1");
+var distanceslider2 = document.getElementById("distanceslider2");
 
 class AmbiSource {
   audioContext;
   audioSource;
   audioElement;
+  volumeNode;
   encoder;
   decoder;
 
@@ -19,10 +22,12 @@ class AmbiSource {
     this.audioContext = audioContext;
     this.audioSource = audioSource;
     this.audioElement = audioContext.createMediaElementSource(this.audioSource);
+    this.volumeNode = new GainNode(this.audioContext);
     this.encoder = new ambisonics.monoEncoder(this.audioContext, 2);
     this.decoder = new ambisonics.binDecoder(this.audioContext, 2);
 
-    this.audioElement.connect(this.encoder.in);
+    this.audioElement.connect(this.volumeNode);
+    this.volumeNode.connect(this.encoder.in);
     this.encoder.out.connect(this.decoder.in);
     this.decoder.out.connect(audioContext.destination);
   }
@@ -41,6 +46,11 @@ class AmbiSource {
   UpdateElev(elevation) {
     this.encoder.elev = elevation;
     this.encoder.updateGains();
+  }
+
+  UpdateDistance(value) {
+    // Use inverse square law to simulate distance
+    this.volumeNode.gain.value = parseFloat(1/((value/25)**2));
   }
 
   Play() {
@@ -69,6 +79,10 @@ function enableSource1() {
   elevslider1.oninput = function() {
     source1.UpdateElev(this.value * -1.0, 0);
   }
+
+  distanceslider1.oninput = function() {
+    source1.UpdateDistance(this.value);
+  }
 }
 
 function pauseSource1() {
@@ -83,6 +97,10 @@ function enableSource2() {
   }
   elevslider2.oninput = function() {
     source2.UpdateElev(this.value * -1.0, 0);
+  }
+
+  distanceslider2.oninput = function() {
+    source2.UpdateDistance(this.value);
   }
 }
 
