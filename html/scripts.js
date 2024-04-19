@@ -43,6 +43,18 @@ class AmbiSource {
     this.encoder.updateGains();
   }
 
+  UpdateAzim2(radians) {
+    var degrees = radians * (180/Math.PI);
+    degrees += 90;
+    if (degrees > 180)
+    {
+      degrees = -360 + degrees;
+    }
+
+    this.encoder.azim = degrees * -1;
+    this.encoder.updateGains();
+  }
+
   UpdateElev(elevation) {
     this.encoder.elev = elevation;
     this.encoder.updateGains();
@@ -223,14 +235,15 @@ window.onload = function() {
           var dy = mouseY - centerY;
           var newAngle = Math.atan2(dy, dx);
           var newRadius = Math.sqrt(dx*dx + dy*dy);
-          console.log(newAngle);
-          console.log(newRadius);
 
           if (newRadius < radius) {
               pointX = mouseX;
               pointY = mouseY;
               drawPoint();
           }
+          
+          source1.UpdateAzim2(newAngle);
+
       }
   });
 
