@@ -241,8 +241,9 @@ window.onload = function() {
               pointY = mouseY;
               drawPoint();
           }
-          
+
           source1.UpdateAzim2(newAngle);
+          source1.UpdateDistance(newRadius + 25);
 
       }
   });
