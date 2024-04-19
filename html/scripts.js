@@ -231,20 +231,27 @@ window.onload = function() {
           var mouseX = event.clientX - rect.left;
           var mouseY = event.clientY - rect.top;
 
+          // Check if mouse is inside or outside the circle
           var dx = mouseX - centerX;
           var dy = mouseY - centerY;
-          var newAngle = Math.atan2(dy, dx);
-          var newRadius = Math.sqrt(dx*dx + dy*dy);
+          var distance = Math.sqrt(dx*dx + dy*dy);
+          var angle = Math.atan2(dy, dx);
 
-          if (newRadius < radius) {
+          if (distance <= radius) {
+              // Mouse is inside the circle, allow free movement
               pointX = mouseX;
               pointY = mouseY;
-              drawPoint();
+          } else {
+              // Mouse is outside the circle, constrain to circumference
+              pointX = centerX + radius * Math.cos(angle);
+              pointY = centerY + radius * Math.sin(angle);
+              distance = 100;
           }
 
-          source1.UpdateAzim2(newAngle);
-          source1.UpdateDistance(newRadius + 25);
+          source1.UpdateAzim2(angle);
+          source1.UpdateDistance(distance + 25);
 
+          drawPoint();
       }
   });
 
