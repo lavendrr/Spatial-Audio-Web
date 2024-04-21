@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="styles.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RM Tranquil Tonescape Web</title>
@@ -8,6 +9,7 @@
 </head>
 <body>
   <!-- UI Elements for Source 1 -->
+  <div class="AmbiSource">
     <button id="playButton1">Play Source 1</button>
     <button id="pauseButton1">Pause Source 1</button>
     <div class="slidecontainer">
@@ -22,7 +24,9 @@
       <input type="range" min="25" max="125" value="25" class="slider" id="distanceslider1" name="distance1">
       <label for="distance1">Distance (1 to 5 meters)</label>
     </div>
+  </div>
 
+  <div class="AmbiSource">
     <!-- UI Elements for Source 2 -->
     <button id="playButton2">Play Source 2</button>
     <button id="pauseButton2">Pause Source 2</button>
@@ -38,6 +42,7 @@
       <input type="range" min="25" max="125" value="25" class="slider" id="distanceslider2" name="distance2">
       <label for="distance2">Distance (1 to 5 meters)</label>
     </div>
+  </div>
 
     <canvas id="myCanvas" width="400" height="400"></canvas>
 
