@@ -55,9 +55,8 @@ class AmbiElement extends HTMLElement {
       var radius = 100;
 
       // Initial point position
-      var pointAngle = Math.PI / 4; // Angle in radians
-      var pointX = centerX + radius * Math.cos(pointAngle);
-      var pointY = centerY + radius * Math.sin(pointAngle);
+      var pointX = centerX;
+      var pointY = centerY;
 
       // Draw the circle
       ctx.beginPath();
@@ -91,6 +90,15 @@ class AmbiElement extends HTMLElement {
           var dy = mouseY - pointY;
           if (Math.sqrt(dx*dx + dy*dy) < 10) {
               isDragging = true;
+          } else {
+            // Jump to mouse position if clicked inside the circle
+            var distance = Math.sqrt(dx*dx + dy*dy);
+            if (distance <= radius) {
+                pointX = mouseX;
+                pointY = mouseY;
+                drawPoint();
+                isDragging = true;
+            }
           }
       });
 
