@@ -175,5 +175,3 @@ document.getElementById('pauseButton1').addEventListener('click', function() {
 // document.getElementById('pauseButton2').addEventListener('click', function() {
 //   pauseSource2();
 // })
-
-
