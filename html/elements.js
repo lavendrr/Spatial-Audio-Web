@@ -117,7 +117,7 @@ class AmbiElement extends HTMLElement {
       // this.appendChild(script);
 
       const audioElement = this.shadowRoot.querySelector("#source1");
-      // audioElement.setAttribute("src", "https://cdn.freesound.org/previews/730/730814_5674468-lq.mp3");
+
       const ambiSource = new AmbiSource(audioElement, audioContext);
 
       const div = this.shadowRoot.querySelector(".AmbiSource");
@@ -126,7 +126,7 @@ class AmbiElement extends HTMLElement {
 
       select.addEventListener("change", function() {
         audioElement.setAttribute("src", this.value);
-        console.log(this.value);
+        ambiSource.Play();
       });
 
       const span = document.createElement("span");
@@ -172,7 +172,6 @@ class AmbiElement extends HTMLElement {
       var isDragging = false;
 
       canvas.addEventListener("mousedown", function(event) {
-          ambiSource.Play();
           var rect = canvas.getBoundingClientRect();
           var mouseX = event.clientX - rect.left;
           var mouseY = event.clientY - rect.top;
