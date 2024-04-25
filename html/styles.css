@@ -1,43 +1,48 @@
 body {
     background-color: rgb(200,200,255);
     text-align: center;
-    /* padding: 30px; */
   }
   
   .AmbiSource {
-      display: inline-block;
-      align-items: center;
-      justify-content: center;
+      display: inline-flex;
       background-color: rgb(154, 227, 188);
       font-family: "Helvetica", sans-serif;
       border-style: solid;
-      text-align: center;
-      width: 30%;
-      height: 210px;
-      margin: auto;
-      padding-top: 20px;
-      padding-left: 10px;
-      padding-right: 10px;
-      padding-bottom: 20px;
-    }
-
-    .slidecontainer {
-      float: left;
-      display: inline;
-      /* height: 210px; */
-      /* line-height: 210px; */
-      /* vertical-align: middle; */
-      width: 250px;
-      border-style: dashed;
-      /* margin-right: 50px; */
-      padding: 20px;
+      align-items: center;
+      height: 230px;
     }
 
   .radar {
-    display: inline-block;
-    border-style: dashed;
     width: 210px;
     height: 210px;
-    
-    /* padding: 50px; */
+    vertical-align: middle;
+  }
+
+  input[type=range] {
+    appearance: auto;
+    -webkit-appearance : slider-vertical;
+    display: inline-block;
+    align-self: center;
+    width: 20px;
+  }
+
+  label {
+    text-align: center;
+    width: 50px;
+  }
+
+  select {
+    vertical-align: middle;
+    /* margin-bottom: 10px; */
+  }
+
+  td {
+    vertical-align: middle;
+    /* border: 1px solid black; */
+    padding-inline: 5px;
+  }
+
+  table {
+    display: inline-table;
+    /* border-spacing: 2px; */
   }

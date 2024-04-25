@@ -79,43 +79,45 @@ class AmbiElement extends HTMLElement {
 
       <link rel="stylesheet" href="styles.css" />
       <div class="AmbiSource">
-        <!-- UI Elements for Source 1 -->
-
         <audio crossorigin="anonymous" id="source1" src="" loop>
         </audio>
-
-        <select name="test" id="test">
-          <option value="https://cdn.freesound.org/previews/730/730814_5674468-lq.mp3">speech</option>
-          <option value="https://cdn.freesound.org/previews/730/730753_1648170-lq.mp3">music</option>
-        </select>
   
-        <span class="slidecontainer">
-          <button id="playButton1">Play Source 1</button> 
-          <button id="pauseButton1">Pause Source 1</button>
-          <p>
-            <input type="range" min="-180" max="180" value="0" class="slider" id="azimslider1" name="azimuth1">
-            <label for="azimuth1">Azimuth (-180 to 180 degrees)</label>
-  
-          <br>
-            <input type="range" min="-90" max="90" value="0" class="slider" id="elevslider1" name="elevation1">
-            <label for="elevation1">Elevation (-90 to 90 degrees)</label>
-  
-          <br>
-            <input type="range" min="25" max="125" value="25" class="slider" id="distanceslider1" name="distance1">
-            <label for="distance1">Distance (1 to 5 meters)</label>
-          </p>
-  
-        </span>
+        <table>
+          <tr>
+            <td colspan=2>
+              <select name="test" id="test">
+                <option value="https://cdn.freesound.org/previews/730/730814_5674468-lq.mp3">speech</option>
+                <option value="https://cdn.freesound.org/previews/730/730753_1648170-lq.mp3">music</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label>
+                Elevation
+              </label>
+            </td>
+            <td>
+              <label>
+                Volume
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="range" min="-90" max="90" value="0" class="slider" id="elevslider" name="elevslider">
+            </td>
+            <td>
+              <input type="range" min="25" max="125" value="25" class="slider" id="volumeslider" name="volumeslider">
+            </td>
+          </tr>
+        </table>
       
       </div>
       `;
     };
 
     connectedCallback() {
-      // const script = document.createElement("script");
-      // script.src = "canvas.js";
-      // this.appendChild(script);
-
       const audioElement = this.shadowRoot.querySelector("#source1");
 
       const ambiSource = new AmbiSource(audioElement, audioContext);
@@ -129,15 +131,15 @@ class AmbiElement extends HTMLElement {
         ambiSource.Play();
       });
 
-      const span = document.createElement("span");
-      div.appendChild(span);
-      span.classList.add("radar");
-
       const canvas = document.createElement("canvas");
+      div.appendChild(canvas);
+      canvas.classList.add("radar");
       canvas.width = 210;
       canvas.height = 210;
-      span.appendChild(canvas);
+
       var ctx = canvas.getContext("2d");
+      console.log(canvas.width);
+      console.log(ctx.canvas.width);
 
       // Circle parameters
       var centerX = canvas.width / 2;
