@@ -85,7 +85,7 @@ class AmbiElement extends HTMLElement {
         <table>
           <tr>
             <td colspan=2>
-              <select name="test" id="test">
+              <select name="sourceselect" id="sourceselect">
                 <option value="https://cdn.freesound.org/previews/730/730814_5674468-lq.mp3">speech</option>
                 <option value="https://cdn.freesound.org/previews/730/730753_1648170-lq.mp3">music</option>
               </select>
@@ -124,12 +124,24 @@ class AmbiElement extends HTMLElement {
 
       const div = this.shadowRoot.querySelector(".AmbiSource");
 
-      const select = this.shadowRoot.querySelector("#test");
+      const select = this.shadowRoot.querySelector("#sourceselect");
+
+      this.shadowRoot.querySelector("#elevslider").oninput = function() {
+        ambiSource.UpdateElev(this.value * -1.0, 0);
+      }
+
+      this.shadowRoot.querySelector("#volumeslider").oninput = function() {
+        ambiSource.UpdateDistance(this.value);
+      }
 
       select.addEventListener("change", function() {
         audioElement.setAttribute("src", this.value);
         ambiSource.Play();
       });
+
+
+
+      // Radar UI
 
       const canvas = document.createElement("canvas");
       div.appendChild(canvas);
