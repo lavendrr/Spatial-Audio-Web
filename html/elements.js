@@ -79,7 +79,7 @@ class AmbiElement extends HTMLElement {
 
       <link rel="stylesheet" href="styles.css" />
       <div class="AmbiSource">
-        <audio crossorigin="anonymous" id="source1" src="" loop>
+        <audio crossorigin="anonymous" id="audioelement" src="" loop>
         </audio>
   
         <table>
@@ -118,13 +118,13 @@ class AmbiElement extends HTMLElement {
     };
 
     connectedCallback() {
-      const audioElement = this.shadowRoot.querySelector("#source1");
+      const audioElement = this.shadowRoot.querySelector("#audioelement");
 
       const ambiSource = new AmbiSource(audioElement, audioContext);
 
       const div = this.shadowRoot.querySelector(".AmbiSource");
 
-      const select = this.shadowRoot.querySelector("#sourceselect");
+      // Event listeners for sliders and source selector
 
       this.shadowRoot.querySelector("#elevslider").oninput = function() {
         ambiSource.UpdateElev(this.value * -1.0, 0);
@@ -134,12 +134,10 @@ class AmbiElement extends HTMLElement {
         ambiSource.UpdateDistance(this.value);
       }
 
-      select.addEventListener("change", function() {
+      this.shadowRoot.querySelector("#sourceselect").addEventListener("change", function() {
         audioElement.setAttribute("src", this.value);
         ambiSource.Play();
       });
-
-
 
       // Radar UI
 
@@ -148,10 +146,7 @@ class AmbiElement extends HTMLElement {
       canvas.classList.add("radar");
       canvas.width = 210;
       canvas.height = 210;
-
       var ctx = canvas.getContext("2d");
-      console.log(canvas.width);
-      console.log(ctx.canvas.width);
 
       // Circle parameters
       var centerX = canvas.width / 2;
