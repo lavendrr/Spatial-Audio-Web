@@ -15,14 +15,17 @@ class AmbiSource {
     this.audioContext = audioContext;
     this.audioSource = audioSource;
     this.audioElement = audioContext.createMediaElementSource(this.audioSource);
+    this.distanceNode = new GainNode(this.audioContext);
     this.volumeNode = new GainNode(this.audioContext);
+    this.volumeNode.gain.value = 0;
     this.encoder = new ambisonics.monoEncoder(this.audioContext, 2);
     this.decoder = new ambisonics.binDecoder(this.audioContext, 2);
 
-    this.audioElement.connect(this.volumeNode);
-    this.volumeNode.connect(this.encoder.in);
+    this.audioElement.connect(this.distanceNode);
+    this.distanceNode.connect(this.encoder.in);
     this.encoder.out.connect(this.decoder.in);
-    this.decoder.out.connect(audioContext.destination);
+    this.decoder.out.connect(this.volumeNode);
+    this.volumeNode.connect(audioContext.destination);
   }
 
   UpdatePos(azimuth, elevation) {
@@ -53,9 +56,14 @@ class AmbiSource {
     this.encoder.updateGains();
   }
 
-  UpdateDistance(value) {
+  UpdateDistance(distance) {
     // Use inverse square law to simulate distance
-    this.volumeNode.gain.value = parseFloat(1/((value/25)**2));
+    this.distanceNode.gain.value = parseFloat(1/((distance/25)**2));
+  }
+
+  UpdateVolume(volume) {
+    // Normal volume adjustment, should accept a range of 0.25 - 2 or so?
+    this.volumeNode.gain.value = parseFloat(volume);
   }
 
   Play() {
@@ -86,8 +94,11 @@ class AmbiElement extends HTMLElement {
           <tr>
             <td colspan=2>
               <select name="sourceselect" id="sourceselect">
-                <option value="https://cdn.freesound.org/previews/730/730814_5674468-lq.mp3">speech</option>
-                <option value="https://cdn.freesound.org/previews/730/730753_1648170-lq.mp3">music</option>
+                <option value="">Select a sound</option>
+                <option value="https://cdn.freesound.org/previews/730/730814_5674468-lq.mp3">Piano</option>
+                <option value="https://cdn.freesound.org/previews/730/730753_1648170-lq.mp3">Birds</option>
+                <option value="https://cdn.freesound.org/previews/733/733516_13286139-lq.mp3">Breeze</option>
+                <option value="https://cdn.freesound.org/previews/733/733514_13286139-lq.mp3">Singing Bowl</option>
               </select>
             </td>
           </tr>
@@ -108,7 +119,7 @@ class AmbiElement extends HTMLElement {
               <input type="range" min="-90" max="90" value="0" class="slider" id="elevslider" name="elevslider">
             </td>
             <td>
-              <input type="range" min="25" max="125" value="25" class="slider" id="volumeslider" name="volumeslider">
+              <input type="range" min="0" max="2" value="0" step="0.05" class="slider" id="volumeslider" name="volumeslider">
             </td>
           </tr>
         </table>
@@ -131,7 +142,7 @@ class AmbiElement extends HTMLElement {
       }
 
       this.shadowRoot.querySelector("#volumeslider").oninput = function() {
-        ambiSource.UpdateDistance(this.value);
+        ambiSource.UpdateVolume(this.value);
       }
 
       this.shadowRoot.querySelector("#sourceselect").addEventListener("change", function() {

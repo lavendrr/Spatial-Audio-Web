@@ -26,6 +26,10 @@ body {
     width: 20px;
   }
 
+  select {
+    text-align: center;
+  }
+
   label {
     text-align: center;
     width: 50px;
