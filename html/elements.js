@@ -167,14 +167,38 @@ class AmbiElement extends HTMLElement {
 
       // Function to draw the draggable point
       function drawPoint() {
+        // Clear the canvas
           ctx.clearRect(0, 0, canvas.width, canvas.height);
+          // Draw the gridlines
+          ctx.beginPath(); // Vertical
+          ctx.moveTo(centerX, centerY + radius);
+          ctx.lineTo(centerX, centerY - radius);
+          ctx.stroke();
+          ctx.beginPath(); // Horizontal
+          ctx.moveTo(centerX - radius, centerY);
+          ctx.lineTo(centerX + radius, centerY);
+          ctx.stroke();
+          // Draw the outer circle
           ctx.beginPath();
           ctx.arc(centerX, centerY, radius, 0, 2 * Math.PI);
           ctx.stroke();
+          // Draw concentric circles
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, radius/4, 0, 2 * Math.PI);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, radius/2, 0, 2 * Math.PI);
+          ctx.stroke();
+          ctx.beginPath();
+          ctx.arc(centerX, centerY, (radius/4)*3, 0, 2 * Math.PI);
+          ctx.stroke();
+          // Draw the draggable point
           ctx.beginPath();
           ctx.arc(pointX, pointY, 5, 0, 2 * Math.PI);
           ctx.fillStyle = "red";
           ctx.fill();
+
+
       }
 
       // Mouse event listeners for dragging
