@@ -18,8 +18,8 @@ class AmbiSource {
     this.distanceNode = new GainNode(this.audioContext);
     this.volumeNode = new GainNode(this.audioContext);
     this.volumeNode.gain.value = 0;
-    this.encoder = new ambisonics.monoEncoder(this.audioContext, 2);
-    this.decoder = new ambisonics.binDecoder(this.audioContext, 2);
+    this.encoder = new ambisonics.monoEncoder(this.audioContext, 3);
+    this.decoder = new ambisonics.binDecoder(this.audioContext, 3);
 
     this.audioElement.connect(this.distanceNode);
     this.distanceNode.connect(this.encoder.in);
@@ -138,7 +138,7 @@ class AmbiElement extends HTMLElement {
       // Event listeners for sliders and source selector
 
       this.shadowRoot.querySelector("#elevslider").oninput = function() {
-        ambiSource.UpdateElev(this.value * -1.0, 0);
+        ambiSource.UpdateElev(this.value, 0);
       }
 
       this.shadowRoot.querySelector("#volumeslider").oninput = function() {
@@ -149,6 +149,18 @@ class AmbiElement extends HTMLElement {
         audioElement.setAttribute("src", this.value);
         ambiSource.Play();
       });
+
+      // Binaural Filter Assignment (Note: check elevation orientation for different IRs)
+      var HOA3soundBuffer;
+      var order = 3;
+      var filterurl = "IRs/irsOrd3.wav"; // ICST Ambisonics Impulse Response.
+      // var filterurl = "IRs/HOA3_IRC_1008_virtual.wav"; // JSAmbisonics Impulse Response
+      var callbackOnLoad = function(mergedBuffer) {
+          HOA3soundBuffer = mergedBuffer;
+          ambiSource.decoder.updateFilters(HOA3soundBuffer);
+      }
+      var HOA3loader = new ambisonics.HOAloader(audioContext, order, filterurl, callbackOnLoad);
+      HOA3loader.load();
 
       // Radar UI
 
