@@ -95,10 +95,17 @@ class AmbiElement extends HTMLElement {
             <td colspan=2>
               <select name="sourceselect" id="sourceselect">
                 <option value="">Select a sound</option>
-                <option value="https://cdn.freesound.org/previews/730/730814_5674468-lq.mp3">Piano</option>
-                <option value="https://cdn.freesound.org/previews/730/730753_1648170-lq.mp3">Birds</option>
-                <option value="https://cdn.freesound.org/previews/733/733516_13286139-lq.mp3">Breeze</option>
+                <option value="https://cdn.freesound.org/previews/733/733515_13286139-lq.mp3">Waves</option>
                 <option value="https://cdn.freesound.org/previews/733/733514_13286139-lq.mp3">Singing Bowl</option>
+                <option value="https://cdn.freesound.org/previews/733/733513_13286139-lq.mp3">Rain (Thunder)</option>
+                <option value="https://cdn.freesound.org/previews/733/733512_13286139-lq.mp3">Rain (No Thunder)</option>
+                <option value="https://cdn.freesound.org/previews/733/733511_13286139-lq.mp3">Creek Flowing</option>
+                <option value="https://cdn.freesound.org/previews/733/733510_13286139-lq.mp3">Chimes (Low)</option>
+                <option value="https://cdn.freesound.org/previews/733/733509_13286139-lq.mp3">Chimes (High)</option>
+                <option value="https://cdn.freesound.org/previews/733/733508_13286139-lq.mp3">Campfire Crackle</option>
+                <option value="https://cdn.freesound.org/previews/733/733516_13286139-lq.mp3">Breeze</option>
+                <option value="https://cdn.freesound.org/previews/733/733507_13286139-lq.mp3">Birds Chirping</option>
+                <option value="https://cdn.freesound.org/previews/730/730753_1648170-lq.mp3">Birds & Breeze</option>
               </select>
             </td>
           </tr>
