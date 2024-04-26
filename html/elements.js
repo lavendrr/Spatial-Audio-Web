@@ -58,7 +58,7 @@ class AmbiSource {
 
   UpdateDistance(distance) {
     // Use inverse square law to simulate distance
-    this.distanceNode.gain.value = parseFloat(1/((distance/25)**2));
+    this.distanceNode.gain.value = parseFloat(1/((distance)**2));
   }
 
   UpdateVolume(volume) {
@@ -260,7 +260,7 @@ class AmbiElement extends HTMLElement {
               }
 
               ambiSource.UpdateAzim2(angle);
-              ambiSource.UpdateDistance(distance + 25);
+              ambiSource.UpdateDistance(distance/100 + 1);
 
               drawPoint();
           }
