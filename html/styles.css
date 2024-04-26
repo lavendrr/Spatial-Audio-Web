@@ -2,45 +2,51 @@ body {
     background-color: rgb(200,200,255);
     text-align: center;
   }
+
+header {
+  font-size: 50px;
+}
   
-  .AmbiSource {
-      display: inline-flex;
-      background-color: rgb(154, 227, 188);
-      font-family: "Helvetica", sans-serif;
-      border-style: solid;
-      align-items: center;
-      height: 230px;
-    }
-
-  .radar {
-    width: 210px;
-    height: 210px;
-    vertical-align: middle;
+.AmbiSource {
+    display: inline-flex;
+    background-color: rgb(154, 227, 188);
+    font-family: "Helvetica", sans-serif;
+    border-style: solid;
+    align-items: center;
+    height: 230px;
+    margin: 10px;
+    padding: 10px;
   }
 
-  input[type=range] {
-    appearance: auto;
-    -webkit-appearance : slider-vertical;
-    display: inline-block;
-    align-self: center;
-    width: 20px;
-  }
+.radar {
+  width: 210px;
+  height: 210px;
+  vertical-align: middle;
+}
 
-  select {
-    text-align: center;
-  }
+input[type=range] {
+  appearance: auto;
+  -webkit-appearance : slider-vertical;
+  display: inline-block;
+  align-self: center;
+  width: 20px;
+}
 
-  label {
-    text-align: center;
-    width: 50px;
-  }
+select {
+  text-align: center;
+}
 
-  td {
-    padding-inline: 5px;
-    /* border: 1px solid black; */
-  }
+label {
+  text-align: center;
+  width: 50px;
+}
 
-  table {
-    display: inline-table;
-    /* border-spacing: 2px; */
-  }
+td {
+  padding-inline: 5px;
+  /* border: 1px solid black; */
+}
+
+table {
+  display: inline-table;
+  /* border-spacing: 2px; */
+}
