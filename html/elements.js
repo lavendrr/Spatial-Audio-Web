@@ -236,8 +236,9 @@ class AmbiElement extends HTMLElement {
       console.log(event.type);
       var inputX, inputY;
       if (event.type == "touchstart") {
-        inputX = event.clientX;
-        inputY = event.clientY;
+        console.log("Executing touchstart if...");
+        inputX = event.touches[0].clientX;
+        inputY = event.touches[0].clientY;
       }
       else {
         inputX = event.clientX;
