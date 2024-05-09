@@ -232,11 +232,11 @@ class AmbiElement extends HTMLElement {
 
     function startDragging(event) {
       event.preventDefault();
-      // console.log(event.touches);
+      console.log(event.type);
       var inputX, inputY;
       if (event.type == "touchstart") {
-        inputX = event.touches[0].clientX;
-        inputY = event.touches[0].clientY;
+        inputX = event.clientX;
+        inputY = event.clientY;
       }
       else {
         inputX = event.clientX;
