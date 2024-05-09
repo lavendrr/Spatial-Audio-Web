@@ -234,6 +234,7 @@ class AmbiElement extends HTMLElement {
       event.preventDefault();
       console.log("Starting drag...");
       console.log(event.type);
+      console.log(event.touches);
       var inputX, inputY;
       if (event.type == "touchstart") {
         console.log("Executing touchstart if...");
