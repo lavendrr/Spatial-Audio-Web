@@ -232,6 +232,7 @@ class AmbiElement extends HTMLElement {
 
     function startDragging(event) {
       event.preventDefault();
+      console.log(event.type);
       var rect = canvas.getBoundingClientRect();
       var mouseX = event.clientX - rect.left;
       var mouseY = event.clientY - rect.top;
@@ -254,6 +255,9 @@ class AmbiElement extends HTMLElement {
 
     function drag(event) {
       event.preventDefault();
+      console.log(event.type);
+      console.log(event.clientX);
+      console.log(event.clientY);
       if (isDragging) {
         var rect = canvas.getBoundingClientRect();
         var mouseX = event.clientX - rect.left;
@@ -285,6 +289,9 @@ class AmbiElement extends HTMLElement {
 
     function stopDragging(event) {
       event.preventDefault();
+      console.log(event.type);
+      console.log(event.clientX);
+      console.log(event.clientY);
       isDragging = false;
     };
 
