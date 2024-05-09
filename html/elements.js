@@ -243,6 +243,9 @@ class AmbiElement extends HTMLElement {
         inputY = event.clientY;
       }
 
+      console.log(inputX);
+      console.log(inputY);
+
       var rect = canvas.getBoundingClientRect();
       var mouseX = inputX - rect.left;
       var mouseY = inputY - rect.top;
@@ -265,19 +268,19 @@ class AmbiElement extends HTMLElement {
 
     function drag(event) {
       event.preventDefault();
-      console.log(event.type);
-      console.log(event.clientX);
-      console.log(event.clientY);
 
       var inputX, inputY;
       if (event.type == "touchmove") {
-        inputX = event.changedTouches[0].pageX;
-        inputY = event.changedTouches[0].pageY;
+        inputX = event.changedTouches[0].clientX;
+        inputY = event.changedTouches[0].clientY;
       }
       else {
         inputX = event.clientX;
         inputY = event.clientY;
       }
+
+      console.log(inputX);
+      console.log(inputY);
 
       if (isDragging) {
         var rect = canvas.getBoundingClientRect();
