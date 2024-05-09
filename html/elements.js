@@ -11,7 +11,7 @@ class AmbiSource {
   decoder;
 
   constructor(audioSource, audioContext) {
-    // Create 2nd order ambisonic encoder and decoder, and route signal flow
+    // Create 3rd order ambisonic encoder and decoder, volume and distance gain nodes, and route signal flow
     this.audioContext = audioContext;
     this.audioSource = audioSource;
     this.audioElement = audioContext.createMediaElementSource(this.audioSource);
@@ -160,7 +160,7 @@ class AmbiElement extends HTMLElement {
       // Binaural Filter Assignment (Note: check elevation orientation for different IRs)
       var HOA3soundBuffer;
       var order = 3;
-      var filterurl = "IRs/irsOrd3.wav"; // ICST Ambisonics Impulse Response.
+      var filterurl = "IRs/irsOrd3.wav"; // IEM Ambisonics Impulse Response
       // var filterurl = "IRs/HOA3_IRC_1008_virtual.wav"; // JSAmbisonics Impulse Response
       var callbackOnLoad = function(mergedBuffer) {
           HOA3soundBuffer = mergedBuffer;
@@ -227,8 +227,6 @@ class AmbiElement extends HTMLElement {
           ctx.arc(pointX, pointY, 5, 0, 2 * Math.PI);
           ctx.fillStyle = "red";
           ctx.fill();
-
-
       }
 
       // Mouse event listeners for dragging
@@ -279,7 +277,7 @@ class AmbiElement extends HTMLElement {
               }
 
               ambiSource.UpdateAzim2(angle);
-              ambiSource.UpdateDistance(distance/100 + 1);
+              ambiSource.UpdateDistance(distance/100 + 1); // Converts [0, 100] to [1, 2]
 
               drawPoint();
           }
@@ -293,5 +291,15 @@ class AmbiElement extends HTMLElement {
   };
   
   customElements.define('ambi-element', AmbiElement);
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
+  document.body.appendChild(new AmbiElement());
   document.body.appendChild(new AmbiElement());
   document.body.appendChild(new AmbiElement());
