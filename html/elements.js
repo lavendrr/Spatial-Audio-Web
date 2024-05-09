@@ -235,8 +235,8 @@ class AmbiElement extends HTMLElement {
 
       var inputX, inputY;
       if (event.type == "touchmove") {
-        inputX = event.touches[0].pageX;
-        inputY = event.touches[0].pageY;
+        inputX = event.changedTouches[0].pageX;
+        inputY = event.changedTouches[0].pageY;
       }
       else {
         inputX = event.clientX;
@@ -271,8 +271,8 @@ class AmbiElement extends HTMLElement {
 
       var inputX, inputY;
       if (event.type == "touchmove") {
-        inputX = event.touches[0].pageX;
-        inputY = event.touches[0].pageY;
+        inputX = event.changedTouches[0].pageX;
+        inputY = event.changedTouches[0].pageY;
       }
       else {
         inputX = event.clientX;
