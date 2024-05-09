@@ -232,10 +232,20 @@ class AmbiElement extends HTMLElement {
 
     function startDragging(event) {
       event.preventDefault();
-      console.log(event.type);
+
+      var inputX, inputY;
+      if (event.type == "touchmove") {
+        inputX = event.touches[0].clientX;
+        inputY = event.touches[0].clientY;
+      }
+      else {
+        inputX = event.clientX;
+        inputY = event.clientY;
+      }
+
       var rect = canvas.getBoundingClientRect();
-      var mouseX = event.clientX - rect.left;
-      var mouseY = event.clientY - rect.top;
+      var mouseX = inputX - rect.left;
+      var mouseY = inputY - rect.top;
 
       var dx = mouseX - pointX;
       var dy = mouseY - pointY;
@@ -258,10 +268,21 @@ class AmbiElement extends HTMLElement {
       console.log(event.type);
       console.log(event.clientX);
       console.log(event.clientY);
+
+      var inputX, inputY;
+      if (event.type == "touchmove") {
+        inputX = event.touches[0].clientX;
+        inputY = event.touches[0].clientY;
+      }
+      else {
+        inputX = event.clientX;
+        inputY = event.clientY;
+      }
+
       if (isDragging) {
         var rect = canvas.getBoundingClientRect();
-        var mouseX = event.clientX - rect.left;
-        var mouseY = event.clientY - rect.top;
+        var mouseX = inputX - rect.left;
+        var mouseY = inputY - rect.top;
 
         // Check if mouse is inside or outside the circle
         var dx = mouseX - centerX;
@@ -289,9 +310,6 @@ class AmbiElement extends HTMLElement {
 
     function stopDragging(event) {
       event.preventDefault();
-      console.log(event.type);
-      console.log(event.clientX);
-      console.log(event.clientY);
       isDragging = false;
     };
 
