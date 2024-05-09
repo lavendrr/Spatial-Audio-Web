@@ -232,6 +232,7 @@ class AmbiElement extends HTMLElement {
 
     function startDragging(event) {
       event.preventDefault();
+      console.log("Starting drag...");
       console.log(event.type);
       var inputX, inputY;
       if (event.type == "touchstart") {
@@ -268,6 +269,8 @@ class AmbiElement extends HTMLElement {
 
     function drag(event) {
       event.preventDefault();
+      console.log("Dragging...");
+      console.log(event.type);
       // console.log(event.touches);
       var inputX, inputY;
       if (event.type == "touchmove") {
@@ -312,6 +315,8 @@ class AmbiElement extends HTMLElement {
     };
 
     function stopDragging(event) {
+      console.log("Drag ending...");
+      console.log(event.type);
       event.preventDefault();
       isDragging = false;
     };
