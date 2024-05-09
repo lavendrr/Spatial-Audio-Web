@@ -232,11 +232,11 @@ class AmbiElement extends HTMLElement {
 
     function startDragging(event) {
       event.preventDefault();
-
+      console.log(event.touches);
       var inputX, inputY;
-      if (event.type == "touchmove") {
-        inputX = event.changedTouches[0].pageX;
-        inputY = event.changedTouches[0].pageY;
+      if (event.type == "touchstart") {
+        inputX = event.touches[0].pageX;
+        inputY = event.touches[0].pageY;
       }
       else {
         inputX = event.clientX;
@@ -268,11 +268,11 @@ class AmbiElement extends HTMLElement {
 
     function drag(event) {
       event.preventDefault();
-
+      console.log(event.touches);
       var inputX, inputY;
       if (event.type == "touchmove") {
-        inputX = event.changedTouches[0].clientX;
-        inputY = event.changedTouches[0].clientY;
+        inputX = event.touches[0].clientX;
+        inputY = event.touches[0].clientY;
       }
       else {
         inputX = event.clientX;
