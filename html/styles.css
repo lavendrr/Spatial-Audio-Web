@@ -32,8 +32,8 @@ header {
 }
 
 input[type=range] {
-  appearance: none;
-  -webkit-appearance: none;
+  /* appearance: none; */
+  /* -webkit-appearance: none; */
   writing-mode: vertical-lr;
   direction: rtl;
   display: inline-block;
@@ -52,16 +52,6 @@ input[type=range]:hover {
   cursor: pointer;
 }
 
-.slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 25px;
-  height: 10px;
-  border-radius: 5px;
-  background: red;
-  cursor: pointer;
-}
-
 select {
   text-align: center;
 }
@@ -74,4 +64,13 @@ label {
 td {
   padding-inline: 5px;
   /* border: 1px solid black; */
+}
+
+p {
+  margin-left: 22%;
+  margin-right: 22%;
+}
+
+footer {
+  font-size: 14px;
 }
