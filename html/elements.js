@@ -120,10 +120,10 @@ class AmbiElement extends HTMLElement {
             </td>
           </tr>
           <tr>
-            <td>
+            <td width=25px height=129px>
               <input type="range" min="-90" max="90" value="0" class="slider" id="elevslider" name="elevslider">
             </td>
-            <td>
+            <td width=25px height=129px>
               <input type="range" min="0" max="2" value="0" step="0.05" class="slider" id="volumeslider" name="volumeslider">
             </td>
           </tr>

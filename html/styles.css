@@ -34,22 +34,44 @@ header {
 input[type=range] {
   appearance: none;
   -webkit-appearance: none;
-  writing-mode: vertical-lr;
-  direction: rtl;
+  /* writing-mode: vertical-lr; */
+  /* direction: rtl; */
+  transform: rotate(-90deg);
+  /* overflow: hidden; */
   display: inline-block;
   align-self: center;
-  width: 25px;
-  background: white;
+  width: 129px;
+  height: 25px;
+  /* background: white; */
   border-radius: 10px;
   opacity: 0.7;
   transition: opacity .2s;
-  height: 129px;
   background: url(https://cdn.discordapp.com/attachments/393226274773925889/1238302253039751228/elevation_bar.png?ex=663eca57&is=663d78d7&hm=e497ef8c1deee2102652bc080e832f0f25ad0b8d2404e489fceb2ac6a9ac2f4e&);
+}
+
+input[type=range]::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 300%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  background: url(https://cdn.discordapp.com/attachments/393226274773925889/1238302253039751228/elevation_bar.png?ex=663eca57&is=663d78d7&hm=e497ef8c1deee2102652bc080e832f0f25ad0b8d2404e489fceb2ac6a9ac2f4e&);
+  transform: rotate(90deg);
 }
 
 input[type=range]:hover {
   opacity: 1;
   cursor: pointer;
+}
+
+.slider::-webkit-slider-runnable-track {
+  width: auto;
+  height: auto;
+  -webkit-appearance: none;
+  color: black;
+  /* margin-top: -1px; */
 }
 
 .slider::-webkit-slider-thumb {
@@ -75,3 +97,37 @@ td {
   padding-inline: 5px;
   /* border: 1px solid black; */
 }
+
+/* custom track */
+/* input[type=range] {
+  appearance: none;
+  -webkit-appearance: none;
+  writing-mode: vertical-lr;
+  direction: rtl;
+  overflow: hidden;
+  display: inline-block;
+  align-self: center;
+  width: 25px;
+  border-radius: 10px;
+  opacity: 0.7;
+  transition: opacity .2s;
+  height: 129px;
+  overflow: hidden;
+  background: url(https://cdn.discordapp.com/attachments/393226274773925889/1238302253039751228/elevation_bar.png?ex=663eca57&is=663d78d7&hm=e497ef8c1deee2102652bc080e832f0f25ad0b8d2404e489fceb2ac6a9ac2f4e&);
+}
+
+input[type=range]:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 10px;
+  border-radius: 5px;
+  background: red;
+  cursor: pointer;
+  box-shadow: 0 75px 0 75px #f50;
+} */
