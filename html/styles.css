@@ -1,35 +1,65 @@
 body {
-    background-color: rgb(200,200,255);
-    text-align: center;
-  }
+  background-color: rgb(200, 200, 255);
+  text-align: center;
+}
 
 header {
   font-size: 50px;
 }
-  
+
 .AmbiSource {
-    display: inline-flex;
-    background-color: rgb(154, 227, 188);
-    font-family: "Helvetica", sans-serif;
-    border-style: solid;
-    align-items: center;
-    height: 230px;
-    margin: 10px;
-    padding: 10px;
-  }
+  display: inline-flex;
+  background-color: rgb(154, 227, 188);
+  font-family: "Helvetica", sans-serif;
+  border-style: solid;
+  align-items: center;
+  height: 230px;
+  margin: 10px;
+  padding: 10px;
+}
 
 .radar {
   width: 210px;
   height: 210px;
   vertical-align: middle;
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.radar:hover {
+  opacity: 1;
+  cursor: pointer;
 }
 
 input[type=range] {
-  appearance: auto;
-  -webkit-appearance : slider-vertical;
+  appearance: none;
+  -webkit-appearance: none;
+  writing-mode: vertical-lr;
+  direction: rtl;
   display: inline-block;
   align-self: center;
-  width: 20px;
+  width: 25px;
+  background: white;
+  border-radius: 10px;
+  opacity: 0.7;
+  transition: opacity .2s;
+  height: 129px;
+  background: url(https://cdn.discordapp.com/attachments/393226274773925889/1238302253039751228/elevation_bar.png?ex=663eca57&is=663d78d7&hm=e497ef8c1deee2102652bc080e832f0f25ad0b8d2404e489fceb2ac6a9ac2f4e&);
+}
+
+input[type=range]:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 10px;
+  border-radius: 5px;
+  background: red;
+  cursor: pointer;
 }
 
 select {
@@ -44,9 +74,4 @@ label {
 td {
   padding-inline: 5px;
   /* border: 1px solid black; */
-}
-
-table {
-  display: inline-table;
-  /* border-spacing: 2px; */
 }
