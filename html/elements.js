@@ -155,6 +155,20 @@ class AmbiElement extends HTMLElement {
       ambiSource.Play();
     });
 
+    div.addEventListener("mousedown", function (event) {
+      console.log(event.target.className);
+      if (event.target.className == "AmbiSource") {
+        event.preventDefault();
+      }
+    });
+
+    div.addEventListener("touchstart", function (event) {
+      console.log(event.target.className);
+      if (event.target.className == "AmbiSource") {
+        event.preventDefault();
+      }
+    });
+
     // Binaural Filter Assignment (Note: check elevation orientation for different IRs)
     var HOA3soundBuffer;
     var order = 3;
