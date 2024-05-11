@@ -15,3 +15,5 @@ The backend development actually didn't take too long, so it was moreso the HTML
 All in all, this turned out to be much more of a web development project than a strictly audio project, but I'm very happy with how the result shows off my skills and passion for audio (particularly spatial), programming/development, and user interaction. Additionally, porting the project to an accessible interface makes it much easier to show off on my website and resume, so I think this will help a lot for my portfolio and potential job opportunities.
 
 Thank you for checking out my project, and I plan to continue iterating on the graphic design and features in my free time as I'm able to get more used to working with HTML and CSS!
+
+Ricky Moctezuma, Music Technology B.S. with a concentration in Sound & Music Computing @ Columbia College Chicago, Spring 2024
