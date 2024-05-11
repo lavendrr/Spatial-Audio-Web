@@ -2,7 +2,7 @@ Tranquil Tonescape Web
 
 Tranquil Tonescape is a customizable 3D soundscape application that runs in the browser and can be accessed from desktop or mobile. 
 
-The project was originally created in Fall '23 using MaxMSP for the audio processing and TouchOSC for the user interface. The primary goal was to port that application to a more accessible format so that it could achieve its goal of being an accessible tool for anxiety and stress management, not just a sound art piece that only runs on my laptop.
+The project was originally created in Fall '23 using MaxMSP for the audio processing and TouchOSC for the user interface. The ICST Ambisonics externals for Max were used for ambisonic encoding, and the IEM plugin suite was used for ambisonic decoding. The primary goal was to port that application to a more accessible format so that it could achieve its goal of being an accessible tool for anxiety and stress management, not just a sound art piece that only runs on my laptop.
 
 I tested various ideas, such as building it into a mobile app using Unity, but I had a lot of trouble trying to get Max to work as a backend for an application that wasn't just a plugin. I also tried PureData, but ran into similar issues packaging it into an application that could run on mobile or other formats besides its original IDE or a plugin.
 
