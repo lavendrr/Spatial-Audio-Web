@@ -12,6 +12,8 @@ Additionally, an essential finding was the JSAmbisonics library (https://github.
 
 The backend development actually didn't take too long, so it was moreso the HTML and CSS styling that took a lot of time towards the end of the project. I had to create custom elements to recreate the radar from my original project. The vertical sliders also required some slightly unconventional styling, and I wanted the whole element to be modular, like a class in an OOP language. To do this in HTML, however, I had to create a custom element that I then appended several times to the webpage. Each sound source module acts as its own self-contained instance, but they all link to the same audio output and thus create the soundscape together.
 
+Lastly, for hosting, I used GitHub Pages in a project-type setup and it was exceptionally easy to use, which allowed me to focus more on development.
+
 All in all, this turned out to be much more of a web development project than a strictly audio project, but I'm very happy with how the result shows off my skills and passion for audio (particularly spatial), programming/development, and user interaction. Additionally, porting the project to an accessible interface makes it much easier to show off on my website and resume, so I think this will help a lot for my portfolio and potential job opportunities.
 
 Thank you for checking out my project, and I plan to continue iterating on the graphic design and features in my free time as I'm able to get more used to working with HTML and CSS!
